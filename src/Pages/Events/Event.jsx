@@ -11,13 +11,12 @@ const Event = () => {
   }, []);
   return (
     <div className="">
-      <EventNews></EventNews>
-      <CurrentFestBanner></CurrentFestBanner>
+      {/* <CurrentFestBanner></CurrentFestBanner> */}
       <CurrentFest></CurrentFest>
-      {/* <UnderConstruction></UnderConstruction> */}
+      {/* <EventNews></EventNews>
       <div className="my-2 pb-4">
         <Headline></Headline>
-      </div>
+      </div> */}
     </div>
   );
 };
