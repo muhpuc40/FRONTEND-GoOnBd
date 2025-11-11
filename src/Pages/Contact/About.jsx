@@ -59,7 +59,7 @@ const About = () => {
         {/* Content */}
         <motion.div
           variants={fadeIn("up", 0.5)}
-          className="relative z-10 h-full flex items-center justify-center text-center px-4 text-white"
+          className="relative z-10 h-full flex items-center justify-center text-center text-white"
         >
           <motion.div variants={fadeIn("up", 0.6)} className="max-w-2xl">
             <motion.h1
@@ -138,7 +138,7 @@ const About = () => {
               variants={fadeIn("left", 0.51)}
               initial="hidden"
               whileInView="show"
-              className="bg-white p-8 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition hover:-translate-y-1"
+              className="bg-white py-8 rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition hover:-translate-y-1"
             >
               <motion.div variants={fadeIn("up", 0.52)}>
                 <FaGamepad className="text-green-600 text-4xl mx-auto mb-4" />
@@ -243,7 +243,7 @@ const About = () => {
               variants={fadeIn("up", 0.77)}
               initial="hidden"
               whileInView="show"
-              className="w-20 h-1 bg-green-500 mx-auto mb-8"
+              className=" h-1 bg-green-500 mx-auto mb-8"
             />
           </div>
           <div>
@@ -364,14 +364,14 @@ const About = () => {
             </motion.p>
             {/* Register Now button */}
             <div className="flex justify-center mt-6">
-              <Link to="/enroll">
+              <Link to="/events">
                 <motion.button
                   variants={fadeIn("right", 0.19)}
                   initial="hidden"
                   animate="show"
                   className="flex items-center text-sm md:text-xl font-semibold md:font-bold bg-yellow-400 hover:bg-red-400 text-violet-500 px-3 md:px-4 py-2 md:py-3 rounded-full transition duration-300 ease-in-out shadow-md hover:shadow-lg"
                 >
-                  Register Now
+                  View Event
                   <FaArrowRight className="ml-2" />
                 </motion.button>
               </Link>

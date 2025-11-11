@@ -11,9 +11,29 @@ import {
 import { MdLocationOn } from "react-icons/md";
 import { GiPartyPopper } from "react-icons/gi";
 import { RiTeamLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// 🧠 Redux
+import { useAppSelector } from "@/redux/hooks";
+import { selectCurrentUser } from "@/redux/features/auth/authSlice";
 
 const CurrentFest = () => {
+  const navigate = useNavigate();
+  const user = useAppSelector(selectCurrentUser);
+
+  const handleRegisterClick = () => {
+    if (!user) {
+      toast.info("🔐 Please log in first to register.", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+      setTimeout(() => navigate("/login"), 2000);
+    } else {
+      navigate("/enroll");
+    }
+  };
+
   return (
     <motion.section
       variants={fadeIn("up", 0.2)}
@@ -23,6 +43,8 @@ const CurrentFest = () => {
       id="current-fest"
       className="bg-gradient-to-r from-red-700/90 to-blue-700/90 py-12 px-4 sm:px-6 lg:px-8 text-white"
     >
+      <ToastContainer />
+
       {/* Header */}
       <motion.div
         variants={fadeIn("up", 0.3)}
@@ -33,7 +55,7 @@ const CurrentFest = () => {
           className="text-3xl md:text-5xl font-bold flex items-center justify-center gap-3"
         >
           <MdLocationOn className="text-yellow-300" />
-          Go On – Chittagong eSports Showdown 2025
+          Go on-Esports Campus fest 2025
           <GiPartyPopper className="text-yellow-300" />
         </motion.h1>
         <motion.div
@@ -70,12 +92,15 @@ const CurrentFest = () => {
                 icon: <FaUsers className="text-blue-400" />,
                 text: (
                   <>
-                    Chittagong is set to host one of its most thrilling gaming
-                    events — <strong>Go On – eSports Showdown 2025!</strong>{" "}
-                    Bringing together students, local pros, and Free Fire fans
+                    <strong>Go on-Esports Campus fest 2025</strong>{" "} will be the biggest esports 
+                    event in Chittagong this year. You can also earn a free entry spot at Omargani M.E.S. College and a custom 
+                    team jersey from Classico by winning the campus play-offs. 
+                    Registration opens on <span className="text-yellow-500 font-bold">Thursday, 13 November.</span>{" "} Sign up and compete to win.
+
+                    {/* Bringing together students, local pros, and E-Sports fans
                     for an unforgettable competitive experience with a{" "}
-                    <span className="text-yellow-500 font-bold">1,50,000৳</span>{" "}
-                    prize pool! 💰
+                    <span className="text-yellow-500 font-bold">2,00,000৳</span>{" "}
+                    prize pool! 💰 */}
                   </>
                 ),
               },
@@ -189,17 +214,16 @@ const CurrentFest = () => {
           eSports scene!
         </motion.p>
         <div className="flex justify-center mt-6">
-          <Link to="/enroll">
-            <motion.button
-              variants={fadeIn("right", 0.19)}
-              initial="hidden"
-              animate="show"
-              className="flex items-center text-sm md:text-xl font-semibold md:font-bold bg-yellow-400 hover:bg-red-400 text-violet-500 px-3 md:px-4 py-2 md:py-3 rounded-full transition duration-300 ease-in-out shadow-md hover:shadow-lg"
-            >
-              Register Now
-              <FaArrowRight className="ml-2" />
-            </motion.button>
-          </Link>
+          <motion.button
+            onClick={handleRegisterClick}
+            variants={fadeIn("right", 0.19)}
+            initial="hidden"
+            animate="show"
+            className="flex items-center text-sm md:text-xl font-semibold md:font-bold bg-yellow-400 hover:bg-red-400 text-violet-500 px-3 md:px-4 py-2 md:py-3 rounded-full transition duration-300 ease-in-out shadow-md hover:shadow-lg"
+          >
+            Register Now
+            <FaArrowRight className="ml-2" />
+          </motion.button>
         </div>
       </motion.div>
     </motion.section>
