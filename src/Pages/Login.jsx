@@ -47,7 +47,12 @@ const Login = () => {
       dispatch(setUser({ user: res.data, token: res.token }));
       toast.success("Login successful!", { id: toastId });
       form.reset();
-      navigate("/user/dash");
+     // navigate("/user/dash");
+      if (res?.data?.role === "admin") {
+        navigate("/admin/dash");
+      } else {
+        navigate("/");
+      }
     } catch (error) {
       console.error("Login error:", error);
 
@@ -73,7 +78,7 @@ const Login = () => {
             <h2 className="flex flex-col justify-center uppercase">
               <span className="font-bold text-xl md:text-3xl">Go On</span>
               <span className="-mt-1 font-normal text-xs md:text-sm tracking-widest">
-                Compete to Win!!
+                Compete to Win!
               </span>
             </h2>
           </div>

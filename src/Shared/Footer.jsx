@@ -35,46 +35,35 @@ const Footer = () => {
         viewport={{ once: true }}
         className="footer text-white footer-center bg-gradient-to-r from-red-700/80 to-blue-700/80 rounded p-8 mt-8 md:mt-12"
       >
+        {/* ✅ Internal Navigation Links */}
         <motion.nav
           variants={fadeIn("up", 0.2)}
           initial="hidden"
           whileInView="show"
           className="grid grid-flow-col gap-4"
         >
-          <motion.a
-            variants={fadeIn("up", 0.22)}
-            className="link link-hover"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            About us
-          </motion.a>
-          <motion.a
-            variants={fadeIn("up", 0.24)}
-            className="link link-hover"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contact
-          </motion.a>
-          <motion.a
-            variants={fadeIn("up", 0.26)}
-            className="link link-hover"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Events
-          </motion.a>
+          <motion.div variants={fadeIn("up", 0.22)}>
+            <Link to="/contact" className="link link-hover">
+              Contact
+            </Link>
+          </motion.div>
+
+          <motion.div variants={fadeIn("up", 0.24)}>
+            <Link to="/events" className="link link-hover">
+              Event
+            </Link>
+          </motion.div>
+
+          <motion.div variants={fadeIn("up", 0.26)}>
+            <Link to="/blog" className="link link-hover">
+              News
+            </Link>
+          </motion.div>
         </motion.nav>
 
+        {/* ✅ Social Links */}
         <motion.nav variants={fadeIn("up", 0.3)} initial="hidden" whileInView="show">
-          <motion.div
-            variants={fadeIn("up", 0.32)}
-            className="grid grid-flow-col gap-4"
-          >
+          <motion.div variants={fadeIn("up", 0.32)} className="grid grid-flow-col gap-4">
             <motion.a
               variants={fadeIn("up", 0.34)}
               href="https://twitter.com"
@@ -113,7 +102,7 @@ const Footer = () => {
 
             <motion.a
               variants={fadeIn("up", 0.39)}
-              href="https://www.facebook.com/darkshooteralvi?rdid=MSB6PER9hKJUHtzT&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1E12UhnQKh%2F#"
+              href="https://www.facebook.com/darkshooteralvi"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -131,6 +120,7 @@ const Footer = () => {
           </motion.div>
         </motion.nav>
 
+        {/* ✅ Footer Bottom */}
         <motion.aside
           variants={fadeIn("up", 0.42)}
           initial="hidden"
