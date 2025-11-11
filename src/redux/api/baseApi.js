@@ -2,12 +2,12 @@ import {
   createApi,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
-import { logout, setUser } from "../features/auth/authSlice";
 import { toast } from "sonner";
 
 // Base query
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:4000/api",
+  // baseUrl: "http://localhost:4000/api",
+  baseUrl: "https://api.goonbd.com/api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     // Access token from auth state
