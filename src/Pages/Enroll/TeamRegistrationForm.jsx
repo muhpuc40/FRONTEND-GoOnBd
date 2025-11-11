@@ -67,7 +67,7 @@ export default function TeamRegistrationForm() {
 
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:4000/api/team-registration", payload, {
+      const res = await axios.post("https://api.goonbd.com/api/team-registration", payload, {
         headers: { "Content-Type": "application/json" },
       });
 
