@@ -25,7 +25,7 @@ export default UserProfile;
 //   const fetchAllUsers = async () => {
 //     try {
 //       setLoading(true);
-//       const res = await axios.get("https://api.goonbd.com//api/user", {
+//       const res = await axios.get("https://api.goonbd.com/api/user", {
 //         withCredentials: true,
 //       });
 //       console.log("✅ All Users Response:", res.data);

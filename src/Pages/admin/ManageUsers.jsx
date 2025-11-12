@@ -10,7 +10,7 @@ const ManageUsers = () => {
   const fetchTeams = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("https://api.goonbd.com//api/team-registration", {
+      const res = await axios.get("https://api.goonbd.com/api/team-registration", {
         withCredentials: true,
       });
       setTeams(res.data.data || []);
@@ -47,7 +47,7 @@ const ManageUsers = () => {
               <div className="flex items-center gap-4 mb-3">
                 {team.teamLogo && (
                   <img
-                    src={`https://api.goonbd.com//${team.teamLogo}`}
+                    src={`https://api.goonbd.com/${team.teamLogo}`}
                     alt={team.teamFullName}
                     className="w-12 h-12 rounded-full object-cover border"
                   />
