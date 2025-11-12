@@ -7,7 +7,7 @@ import { toast } from "sonner";
 
 // Base query
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://api.goonbd.com/api",
+  baseUrl: "https://api.goonbd.com//api",
   credentials: "include",
   prepareHeaders: (headers, { getState }) => {
     // Access token from auth state

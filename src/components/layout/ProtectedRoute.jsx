@@ -14,7 +14,7 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to={`/login`} replace={true} />;
   }
 
-  if (user?.role === "Gamer") {
+  if (user?.role === "gamer") {
     return children;
   } else return <Navigate to={`/`} replace={true} />;
 };

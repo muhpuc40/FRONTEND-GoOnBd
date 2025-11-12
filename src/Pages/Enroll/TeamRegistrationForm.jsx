@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
@@ -15,12 +14,6 @@ export default function TeamRegistrationForm() {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
   const [serverMessage, setServerMessage] = useState(null);
-
-  // ✅ Get logged-in user info from Redux
-  const user = useSelector((state) => state.auth?.user);
-  const userName = user?.name || user?.displayName || "Unknown User";
-  const userEmail = user?.email || "Unknown Email";
-  const userContact = user?.whatsapp || "Contact Info Missing";
 
   const inputClass = (error) =>
     `w-full rounded-lg border px-3 py-2 bg-gray-50 text-gray-900 placeholder-gray-400 
@@ -70,18 +63,11 @@ export default function TeamRegistrationForm() {
         ...p,
       })),
       submittedAt: new Date().toISOString(),
-
-      // ✅ Include logged-in user info
-      submittedBy: {
-        name: userName,
-        email: userEmail,
-        contact: userContact
-      },
     };
 
     try {
       setLoading(true);
-      const res = await axios.post("https://api.goonbd.com/api/team-registration", payload, {
+      const res = await axios.post("https://api.goonbd.com//api/team-registration", payload, {
         headers: { "Content-Type": "application/json" },
       });
 
@@ -147,8 +133,11 @@ export default function TeamRegistrationForm() {
             whileInView="show"
             className="text-2xl md:text-4xl font-bold mb-6"
           >
-            Registration for{" "}
-            <span className="text-yellow-300">Go on-Esports Campus Fest 2025</span>
+            Enrollment for{" "}
+            <span className="text-yellow-300">
+              Go On - Chittagong eSports Showdown 2025
+            </span>{" "}
+            is Coming!
           </motion.h1>
 
           <motion.p
@@ -157,7 +146,7 @@ export default function TeamRegistrationForm() {
             whileInView="show"
             className="italic text-lg md:text-xl font-medium"
           >
-            Compete to Win!
+            Stay connected and gear up for the ultimate gaming showdown.
           </motion.p>
         </motion.div>
       </motion.section>
@@ -227,13 +216,7 @@ export default function TeamRegistrationForm() {
                   {["fullName", "inGameName", "uid", "roll"].map((field) => (
                     <div key={field}>
                       <label className="block text-xs font-medium mb-1 capitalize">
-                        {field === "fullName"
-                          ? "Full Name"
-                          : field === "uid"
-                          ? "UID"
-                          : field === "inGameName"
-                          ? "Game Name"
-                          : field}
+                        {field === "uid" ? "UID" : field === "inGameName" ? "Game Name" : field}
                       </label>
                       <input
                         value={player[field]}

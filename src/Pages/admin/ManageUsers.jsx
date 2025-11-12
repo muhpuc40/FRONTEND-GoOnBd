@@ -10,7 +10,7 @@ const ManageUsers = () => {
   const fetchTeams = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("https://api.goonbd.com/api/team-registration", {
+      const res = await axios.get("https://api.goonbd.com//api/team-registration", {
         withCredentials: true,
       });
       setTeams(res.data.data || []);
@@ -47,41 +47,34 @@ const ManageUsers = () => {
               <div className="flex items-center gap-4 mb-3">
                 {team.teamLogo && (
                   <img
-                    src={`https://api.goonbd.com/${team.teamLogo}`}
+                    src={`https://api.goonbd.com//${team.teamLogo}`}
                     alt={team.teamFullName}
                     className="w-12 h-12 rounded-full object-cover border"
                   />
                 )}
                 <div>
                   <h4 className="text-lg font-semibold">{team.teamFullName}</h4>
-                  <p className="text-sm ">{team.teamShortName}</p>
-                  <h4 className="text-lg font-semibold">{team.institution}</h4>
+                  <p className="text-sm text-gray-500">{team.teamShortName}</p>
+                  <h4 className="text-lg font-semibold">Campus: {team.institution}</h4>
                 </div>
               </div>
 
               <div className="mt-2">
-                <h5 className="font-medium mb-1">Players:</h5>
-                <ul className="text-sm list-disc list-inside space-y-1">
+                <h5 className="font-medium text-gray-700 mb-1">Players:</h5>
+                <ul className="text-sm text-gray-600 list-disc list-inside space-y-1">
                   {team.players?.map((player, idx) => (
                     <li key={idx}>
                       <span className="font-semibold">{player.role}:</span> {player.fullName} (
-                      {player.inGameName}) | UID: {player.uid} | Roll: {player.roll}
-                      {player.whatsapp && (
-                       <li>Contact: {player.whatsapp}</li>
-                      )}
+                      {player.inGameName} | UID: {player.uid})
+                       
                     </li>
                   ))}
                 </ul>
               </div>
 
-            <div className="mt-2 text-sm">
-              Registered By: {team.submittedBy?.name} | {team.submittedBy?.email} | {team.submittedBy?.contact}
-            </div>
-
-            <div className="mt-4 text-sm">
-              Registered at: {new Date(team.submittedAt).toLocaleString()}
-            </div>
-             
+              <div className="mt-4 text-sm text-gray-500">
+                Registered at: {new Date(team.submittedAt).toLocaleString()}
+              </div>
             </div>
           ))}
         </div>
